@@ -1,0 +1,140 @@
+/* Container */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label */
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #111;
+}
+
+.dark .form-group label {
+  color: #e2e8f0;
+}
+
+/* Inputs */
+.form-input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #111;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.dark .form-input {
+  background: #334155;
+  color: #fff;
+  border: 1px solid #475569;
+}
+
+/* Focus */
+.form-input:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Row */
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+/* Amount Input */
+.amount-input-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.currency-symbol {
+  position: absolute;
+  left: 10px;
+  color: #666;
+}
+
+.dark .currency-symbol {
+  color: #cbd5f5;
+}
+
+.amount-input {
+  padding-left: 22px;
+}
+
+/* Buttons */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+/* Primary button */
+.btn-primary {
+  background-color: #2563eb;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+/* Outline button */
+.btn-outline {
+  background: #e5e7eb;
+  color: #111;
+}
+
+.btn-outline:hover {
+  background: #d1d5db;
+}
+
+.dark .btn-outline {
+  background: #334155;
+  color: white;
+}
+
+.dark .btn-outline:hover {
+  background: #475569;
+}
+
+.input-error {
+  border-color: #dc2626;
+}
+
+.dark .input-error {
+  border-color: #ef4444;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+}

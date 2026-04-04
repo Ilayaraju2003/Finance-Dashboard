@@ -1,0 +1,42 @@
+/* Card */
+.chart-card {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+  height: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.dark .chart-card {
+  background: #1e293b;
+  color: white;
+}
+
+/* Title */
+.chart-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #111;
+}
+
+.dark .chart-title {
+  color: #fff;
+}
+
+/* Container */
+.chart-container {
+  position: relative;
+  height: 300px;
+}
+
+/* Empty text */
+.chart-empty {
+  text-align: center;
+  color: #777;
+  margin-top: 40px;
+}
+
+.dark .chart-empty {
+  color: #cbd5f5;
+}

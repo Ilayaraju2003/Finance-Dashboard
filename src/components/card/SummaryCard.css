@@ -1,0 +1,92 @@
+/* Card */
+.summary-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.dark .summary-card {
+  background: #1e293b;
+  color: white;
+}
+
+/* Layout */
+.summary-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Title */
+.summary-title {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.dark .summary-title {
+  color: #cbd5f5;
+}
+
+/* Amount */
+.summary-amount {
+  font-size: 22px;
+  font-weight: bold;
+  color: #111;
+}
+
+.dark .summary-amount {
+  color: #fff;
+}
+
+/* Change */
+.summary-change {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+/* Positive */
+.summary-change.positive {
+  color: #16a34a;
+}
+
+/* Negative */
+.summary-change.negative {
+  color: #dc2626;
+}
+
+/* Icon container */
+.summary-icon {
+  padding: 12px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Positive icon */
+.icon-positive {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.dark .icon-positive {
+  background: rgba(22, 163, 74, 0.2);
+  color: #22c55e;
+}
+
+/* Negative icon */
+.icon-negative {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.dark .icon-negative {
+  background: rgba(220, 38, 38, 0.2);
+  color: #ef4444;
+}

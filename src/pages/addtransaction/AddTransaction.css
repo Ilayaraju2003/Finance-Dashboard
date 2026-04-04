@@ -1,0 +1,185 @@
+/* Page */
+.add-transaction-page {
+  padding: 20px;
+  background-color: #f9fafb;
+ 
+}
+
+.dark .add-transaction-page {
+  background-color: #0f172a;
+}
+
+/* Header */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.page-header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #111;
+}
+
+.dark .page-header h1 {
+  color: #fff;
+}
+
+/* Back Button */
+.back-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #e5e7eb;
+  color: #111;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background: #d1d5db;
+}
+
+.dark .back-btn {
+  background: #334155;
+  color: #fff;
+}
+
+.dark .back-btn:hover {
+  background: #475569;
+}
+
+/* Card */
+.form-card {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 12px;
+  margin: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.dark .form-card {
+  background: #1e293b;
+  color: white;
+}
+
+/* Form */
+form > div {
+  margin-bottom: 16px;
+}
+
+/* Labels */
+label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #111;
+}
+
+.dark label {
+  color: #e2e8f0;
+}
+
+/* Inputs */
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #111;
+  transition: 0.2s;
+}
+
+.dark input,
+.dark select {
+  background: #334155;
+  color: #fff;
+  border: 1px solid #475569;
+}
+
+/* Focus */
+input:focus,
+select:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Row layout */
+.row {
+  display: flex;
+  gap: 12px;
+}
+
+.row > div {
+  flex: 1;
+}
+
+/* Buttons */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* Submit */
+button[type="submit"] {
+  background-color: #2563eb;
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background-color: #1d4ed8;
+}
+
+/* Disabled */
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Error Box */
+.error-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.dark .error-box {
+  background: rgba(220, 38, 38, 0.2);
+  color: #fca5a5;
+}
+
+/* Error Icon */
+.error-icon {
+  font-size: 18px;
+}
+
+/* Field error */
+.field-error {
+  color: #dc2626;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.dark .field-error {
+  color: #f87171;
+}

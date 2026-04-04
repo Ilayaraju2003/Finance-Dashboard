@@ -1,0 +1,199 @@
+/* Container */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Table */
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.dark .transaction-table {
+  background: #1e293b;
+  color: white;
+}
+
+/* Header */
+.transaction-table thead {
+  background: #f9fafb;
+}
+
+.dark .transaction-table thead {
+  background: #334155;
+}
+
+.transaction-table th {
+  padding: 12px;
+  font-size: 13px;
+  text-align: left;
+  color: #666;
+  font-weight: 600;
+}
+
+.dark .transaction-table th {
+  color: #cbd5f5;
+}
+
+/* Rows */
+.transaction-table td {
+  padding: 12px;
+  text-align: left;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+}
+
+.dark .transaction-table td {
+  border-top: 1px solid #334155;
+}
+
+/* Hover */
+.transaction-table tbody tr:hover {
+  background: #f5f5f5;
+}
+
+.dark .transaction-table tbody tr:hover {
+  background: #334155;
+}
+
+/* Right align */
+.text-right {
+  text-align: right;
+}
+
+/* Transaction info */
+.transaction-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Icon */
+.icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Income */
+.icon.income {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.dark .icon.income {
+  background: rgba(22, 163, 74, 0.2);
+  color: #22c55e;
+}
+
+/* Expense */
+.icon.expense {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.dark .icon.expense {
+  background: rgba(220, 38, 38, 0.2);
+  color: #ef4444;
+}
+
+/* Title */
+.title {
+  font-weight: 500;
+}
+
+/* Date */
+.date {
+  color: #666;
+}
+
+.dark .date {
+  color: #cbd5f5;
+}
+
+/* Category badge */
+.category-badge {
+  background: #e0e7ff;
+  color: #4f46e5;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.dark .category-badge {
+  background: rgba(79, 70, 229, 0.2);
+  color: #a5b4fc;
+}
+
+/* Amount */
+.amount {
+  font-weight: bold;
+  text-align: right;
+}
+
+/* Income amount */
+.amount.income {
+  color: #16a34a;
+}
+
+.dark .amount.income {
+  color: #22c55e;
+}
+
+/* Expense amount */
+.amount.expense {
+  color: #dc2626;
+}
+
+.dark .amount.expense {
+  color: #ef4444;
+}
+
+/* Empty row */
+.empty-row {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+}
+
+.dark .empty-row {
+  color: #cbd5f5;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-btn {
+  background: #4caf50;
+  border: none;
+  color: white;
+  padding: 6px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background: #f44336;
+  border: none;
+  color: white;
+  padding: 6px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  background: #45a049;
+}
+
+.delete-btn:hover {
+  background: #d32f2f;
+}
