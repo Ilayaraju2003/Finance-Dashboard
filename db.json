@@ -167,6 +167,14 @@
       "type": "expense",
       "date": "2026-04-04",
       "id": "Ln7ddRRMq6k"
+    },
+    {
+      "title": "333",
+      "amount": 3333,
+      "category": "Food",
+      "type": "expense",
+      "date": "2026-04-04",
+      "id": "3NTku4K6hko"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

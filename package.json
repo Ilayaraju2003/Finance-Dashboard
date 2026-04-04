@@ -24,7 +24,7 @@
     "build": "react-scripts build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "vercel-build": "npm run build"
+    "vercel-build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [
