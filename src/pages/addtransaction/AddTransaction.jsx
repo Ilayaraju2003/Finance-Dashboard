@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import TransactionForm from '../../components/form/TransactionForm';
-import { updateTransaction } from '../../api/api';
 import './AddTransaction.css';
 
-const AddTransaction = ({ onAddTransaction, onUpdateTransaction }) => {
+const AddTransaction = ({ onAddTransaction, onEditTransaction }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -19,18 +18,17 @@ const AddTransaction = ({ onAddTransaction, onUpdateTransaction }) => {
 
     try {
       if (editData) {
-        // ✅ UPDATE FLOW
-        const updated = await updateTransaction(editData.id, transaction);
+        // ✅ EDIT (LOCAL)
+        const updatedTransaction = {
+          ...transaction,
+          id: editData.id,
+          amount: parseFloat(transaction.amount),
+        };
 
-        if (onUpdateTransaction) {
-          onUpdateTransaction(updated);
-        } else {
-          onAddTransaction(updated); // fallback
-        }
-
+        onEditTransaction(updatedTransaction);
       } else {
-        // ✅ ADD FLOW
-        await onAddTransaction(transaction);
+        // ✅ ADD
+        onAddTransaction(transaction);
       }
 
       navigate('/');

@@ -70,8 +70,10 @@
   color: white;
 }
 
-.filters-card h2 {
-  margin-bottom: 10px;
+
+.dark .filters-card h2 {
+   color: #fff;
+  
 }
 
 /* Grid */

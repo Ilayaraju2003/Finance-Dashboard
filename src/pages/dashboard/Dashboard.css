@@ -87,6 +87,15 @@
   border-top: 4px solid #38bdf8;
 }
 
+.table-container {
+  max-height: 300px;   /* adjust height */
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 10px;
+}
+
+
+
 @keyframes spin {
   to {
     transform: rotate(360deg);

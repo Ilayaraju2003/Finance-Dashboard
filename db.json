@@ -175,6 +175,14 @@
       "type": "expense",
       "date": "2026-04-04",
       "id": "3NTku4K6hko"
+    },
+    {
+      "title": "ttv",
+      "amount": 5667,
+      "category": "Food",
+      "type": "expense",
+      "date": "2026-04-05",
+      "id": "fr6Z3gSOybc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
