@@ -98,9 +98,16 @@ const TransactionHistory = ({ transactions = [] }) => {
   };
 
   const formatDate = (dateString) => {
-    const date = parseDate(dateString);
-    return isNaN(date) ? 'Invalid Date' : date.toLocaleDateString();
-  };
+  const date = parseDate(dateString);
+
+  if (isNaN(date)) return '—';
+
+  return date.toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric'
+  });
+};
 
   const categories = [...new Set(transactions.map(tx => tx.category))];
 
