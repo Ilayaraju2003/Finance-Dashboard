@@ -87,11 +87,93 @@
   border-top: 4px solid #38bdf8;
 }
 
+/* ========================= */
+/* CONTAINER */
+/* ========================= */
+
 .table-container {
-  max-height: 300px;   /* adjust height */
-  overflow-y: auto;
-  overflow-x: hidden;
-  border-radius: 10px;
+  width: 100%;
+}
+
+/* ========================= */
+/* DESKTOP TABLE */
+/* ========================= */
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transaction-table th,
+.transaction-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+/* ========================= */
+/* MOBILE VIEW */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+  .transaction-table thead {
+    display: none;
+  }
+
+  .transaction-table,
+  .transaction-table tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .transaction-table tr {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .transaction-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border: none;
+  }
+
+  .transaction-table td::before {
+    content: attr(data-label);
+    font-size: 12px;
+    color: #888;
+    font-weight: 500;
+  }
+
+  /* Description row special */
+  .transaction-table td:first-child {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .transaction-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Amount styling */
+  .amount {
+    font-weight: bold;
+  }
+
+  /* Actions */
+  .actions {
+    justify-content: flex-end;
+    gap: 10px;
+  }
 }
 
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaSearch, FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa';
+import { FaSearch } from 'react-icons/fa';
 import './TransactionHistory.css';
 
 const TransactionHistory = ({ transactions = [] }) => {
@@ -105,108 +105,93 @@ const TransactionHistory = ({ transactions = [] }) => {
   const categories = [...new Set(transactions.map(tx => tx.category))];
 
   return (
-    <div className="history-container">
+  <div className="history-container">
 
-      {/* Header */}
-      <div className="history-header">
-        <h1>Transaction History</h1>
+    {/* Header */}
+    <div className="history-header">
+      <h1>Transaction History</h1>
 
-        <div className="search-box">
-          <FaSearch className="search-icon" />
-          <input
-            type="text"
-            placeholder="Search transactions..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
+      <div className="search-box">
+        <FaSearch className="search-icon" />
+        <input
+          type="text"
+          placeholder="Search transactions..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
       </div>
-
-      {/* Filters */}
-      <div className="filters-card">
-        <h2>Filters</h2>
-
-        <div className="filters-grid">
-          <select name="type" value={filters.type} onChange={handleFilterChange}>
-            <option value="all">All Types</option>
-            <option value="income">Income</option>
-            <option value="expense">Expense</option>
-          </select>
-
-          <select name="category" value={filters.category} onChange={handleFilterChange}>
-            <option value="all">All Categories</option>
-            {categories.map(cat => (
-              <option key={cat}>{cat}</option>
-            ))}
-          </select>
-
-          <input type="date" name="startDate" value={filters.startDate} onChange={handleFilterChange} />
-          <input type="date" name="endDate" value={filters.endDate} onChange={handleFilterChange} />
-        </div>
-      </div>
-
-      {/* Table */}
-      <div className="table-card">
-        <table className="history-table">
-
-          <thead>
-            <tr>
-              <th>No</th>
-
-              <th onClick={() => handleSort('title')}>
-                Description {sortConfig.key === 'title' && (sortConfig.direction === 'asc' ? <FaSortAmountUp /> : <FaSortAmountDown />)}
-              </th>
-
-              <th onClick={() => handleSort('date')}>
-                Date {sortConfig.key === 'date' && (sortConfig.direction === 'asc' ? <FaSortAmountUp /> : <FaSortAmountDown />)}
-              </th>
-
-              <th onClick={() => handleSort('category')}>
-                Category {sortConfig.key === 'category' && (sortConfig.direction === 'asc' ? <FaSortAmountUp /> : <FaSortAmountDown />)}
-              </th>
-
-              <th className="right" onClick={() => handleSort('amount')}>
-                Amount {sortConfig.key === 'amount' && (sortConfig.direction === 'asc' ? <FaSortAmountUp /> : <FaSortAmountDown />)}
-              </th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {filteredTransactions.length > 0 ? (
-              filteredTransactions.map((tx, index) => {
-                const safeAmount = Number(tx.amount ?? 0);
-
-                return (
-                  <tr key={tx.id}>
-                    <td className="serial">{index + 1}</td>
-
-                    <td>{tx.title || '-'}</td>
-                    <td>{formatDate(tx.date)}</td>
-
-                    <td>
-                      <span className="badge">{tx.category || '-'}</span>
-                    </td>
-
-                    <td className={`amount ${tx.type}`}>
-                      {tx.type === 'income' ? '+' : '-'}₹{safeAmount.toFixed(2)}
-                    </td>
-                  </tr>
-                );
-              })
-            ) : (
-              <tr>
-                <td colSpan="5" className="empty">
-                  No transactions found
-                </td>
-              </tr>
-            )}
-          </tbody>
-
-        </table>
-      </div>
-
     </div>
-  );
+
+    {/* Filters */}
+    <div className="filters-card">
+      <h2>Filters</h2>
+
+      <div className="filters-grid">
+        <select name="type" value={filters.type} onChange={handleFilterChange}>
+          <option value="all">All Types</option>
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+        </select>
+
+        <select name="category" value={filters.category} onChange={handleFilterChange}>
+          <option value="all">All Categories</option>
+          {categories.map(cat => (
+            <option key={cat}>{cat}</option>
+          ))}
+        </select>
+
+        <input type="date" name="startDate" value={filters.startDate} onChange={handleFilterChange} />
+        <input type="date" name="endDate" value={filters.endDate} onChange={handleFilterChange} />
+      </div>
+    </div>
+
+    {/* Table */}
+    <div className="table-card">
+      <table className="history-table">
+
+        <thead>
+          <tr>
+            <th>No</th>
+            <th onClick={() => handleSort('title')}>Description</th>
+            <th onClick={() => handleSort('date')}>Date</th>
+            <th onClick={() => handleSort('category')}>Category</th>
+            <th onClick={() => handleSort('amount')}>Amount</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {filteredTransactions.length > 0 ? (
+            filteredTransactions.map((tx, index) => {
+              const safeAmount = Number(tx.amount ?? 0);
+
+              return (
+                <tr key={tx.id}>
+                  <td data-label="No">{index + 1}</td>
+                  <td data-label="Description">{tx.title || '-'}</td>
+                  <td data-label="Date">{formatDate(tx.date)}</td>
+                  <td data-label="Category">
+                    <span className="badge">{tx.category || '-'}</span>
+                  </td>
+                  <td data-label="Amount" className={`amount ${tx.type}`}>
+                    {tx.type === 'income' ? '+' : '-'}₹{safeAmount.toFixed(2)}
+                  </td>
+                </tr>
+              );
+            })
+          ) : (
+            <tr>
+              <td colSpan="5" className="empty">
+                No transactions found
+              </td>
+            </tr>
+          )}
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+);
 };
 
 export default TransactionHistory;
