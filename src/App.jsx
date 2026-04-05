@@ -8,6 +8,8 @@ import { getTransactions, addTransaction, deleteTransaction } from './api/api';
 import './App.css';
 import './index.css';
 
+
+
 function App() {
   const [transactions, setTransactions] = useState([]);
 
