@@ -18,9 +18,7 @@ const TransactionForm = ({ onSubmit, initialData = {}, isSubmitting }) => {
         amount: initialData.amount || '',
         category: initialData.category || 'Food',
         type: initialData.type || 'expense',
-        date:
-          initialData.date ||
-          new Date().toISOString().split('T')[0],
+        date: initialData.date || new Date().toISOString().split('T')[0],
       });
     }
   }, [initialData]);
@@ -37,7 +35,7 @@ const TransactionForm = ({ onSubmit, initialData = {}, isSubmitting }) => {
     setFormData((prev) => ({
       ...prev,
       [name]: name === 'amount'
-        ? value === '' ? '' : parseFloat(value)
+        ? value === '' ? '' : Number(value)
         : value
     }));
   };
@@ -53,15 +51,12 @@ const TransactionForm = ({ onSubmit, initialData = {}, isSubmitting }) => {
     const transaction = {
       ...formData,
       id: initialData.id || Date.now(),
-      amount: parseFloat(formData.amount),
+      amount: Number(formData.amount),
     };
 
     onSubmit(transaction);
 
-    // ✅ Reset only if adding
-    if (!initialData.id) {
-      resetForm();
-    }
+    if (!initialData.id) resetForm();
   };
 
   const resetForm = () => {
@@ -86,6 +81,7 @@ const TransactionForm = ({ onSubmit, initialData = {}, isSubmitting }) => {
           value={formData.title}
           onChange={handleChange}
           className="form-input"
+          placeholder="Enter title"
           required
         />
       </div>
@@ -94,7 +90,7 @@ const TransactionForm = ({ onSubmit, initialData = {}, isSubmitting }) => {
       <div className="form-group">
         <label>Amount</label>
         <div className="amount-input-wrapper">
-          <span className="currency-symbol">$</span>
+          <span className="currency-symbol">₹</span>
           <input
             type="number"
             step="0.01"
@@ -172,10 +168,11 @@ const TransactionForm = ({ onSubmit, initialData = {}, isSubmitting }) => {
           {isSubmitting
             ? 'Saving...'
             : initialData.id
-            ? 'Update Transaction'
-            : 'Add Transaction'}
+            ? 'Update'
+            : 'Add'}
         </button>
       </div>
+
     </form>
   );
 };

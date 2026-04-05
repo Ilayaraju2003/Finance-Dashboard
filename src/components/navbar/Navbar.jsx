@@ -9,8 +9,9 @@ const Navbar = () => {
   const [isDark, setIsDark] = useState(
     document.documentElement.classList.contains("dark")
   );
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  // Live clock
+  // ✅ Live clock
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date());
@@ -19,7 +20,7 @@ const Navbar = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // Theme toggle
+  // ✅ Theme toggle
   const toggleTheme = () => {
     document.documentElement.classList.toggle("dark");
     setIsDark(!isDark);
@@ -39,11 +40,12 @@ const Navbar = () => {
         <div className="navbar-logo">Finance Dashboard</div>
 
         {/* Menu */}
-        <div className="navbar-menu">
+        <div className={`navbar-menu ${menuOpen ? "open" : ""}`}>
           {navItems.map((item) => (
             <Link
               key={item.path}
               to={item.path}
+              onClick={() => setMenuOpen(false)} // close menu on click
               className={`nav-link ${
                 location.pathname === item.path ? "active" : ""
               }`}
@@ -55,11 +57,23 @@ const Navbar = () => {
 
         {/* Right side */}
         <div className="navbar-right">
-          <div className="time">{time.toLocaleTimeString()}</div>
+
+          <div className="time">
+            {time.toLocaleTimeString()}
+          </div>
 
           <button onClick={toggleTheme} className="theme-btn">
             {isDark ? "🌞" : "🌙"}
           </button>
+
+          {/* Hamburger */}
+          <button
+            className="menu-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            ☰
+          </button>
+
         </div>
 
       </div>

@@ -14,12 +14,11 @@ const Dashboard = ({ transactions = [], onDeleteTransaction }) => {
   });
 
   const [topCategories, setTopCategories] = useState([]);
-
   const navigate = useNavigate();
 
-  // ✅ SORT RECENT
+  // ✅ SORT
   const recentTransactions = [...transactions]
-  .sort((a, b) => new Date(b.date) - new Date(a.date));
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
 
   // ✅ DELETE
   const handleDelete = (id) => {
@@ -31,14 +30,12 @@ const Dashboard = ({ transactions = [], onDeleteTransaction }) => {
     navigate("/add-transaction", { state: { transaction } });
   };
 
-  // ✅ CALCULATIONS (NO DELAY)
+  // ✅ CALCULATIONS
   useEffect(() => {
-    // Income
     const income = transactions
       .filter(tx => tx.type === 'income')
       .reduce((sum, tx) => sum + tx.amount, 0);
 
-    // Expenses
     const expenses = transactions
       .filter(tx => tx.type === 'expense')
       .reduce((sum, tx) => sum + tx.amount, 0);
@@ -49,7 +46,6 @@ const Dashboard = ({ transactions = [], onDeleteTransaction }) => {
       balance: income - expenses,
     });
 
-    // Categories
     const categoryMap = {};
 
     transactions
@@ -71,31 +67,19 @@ const Dashboard = ({ transactions = [], onDeleteTransaction }) => {
 
   }, [transactions]);
 
-  // ✅ SUMMARY CARDS
   const summaryCards = [
-    {
-      title: "Total Income",
-      amount: summary.totalIncome,
-      icon: FaArrowUp,
-      trend: "up",
-    },
-    {
-      title: "Total Expenses",
-      amount: summary.totalExpenses,
-      icon: FaArrowDown,
-      trend: "down",
-    },
-    {
-      title: "Current Balance",
-      amount: summary.balance,
-      icon: FaWallet,
-      trend: summary.balance >= 0 ? "up" : "down",
-    },
+    { title: "Total Income", amount: summary.totalIncome, icon: FaArrowUp, trend: "up" },
+    { title: "Total Expenses", amount: summary.totalExpenses, icon: FaArrowDown, trend: "down" },
+    { title: "Current Balance", amount: summary.balance, icon: FaWallet, trend: summary.balance >= 0 ? "up" : "down" },
   ];
 
   return (
     <div className="dashboard">
-      <h1 className="dashboard-title">Dashboard</h1>
+
+      {/* Header */}
+      <div className="dashboard-header">
+        <h1 className="dashboard-title">Dashboard</h1>
+      </div>
 
       {/* Summary */}
       <div className="summary-grid">
@@ -115,24 +99,25 @@ const Dashboard = ({ transactions = [], onDeleteTransaction }) => {
 
         {/* Transactions */}
         <div className="card">
-          <h2>Recent Transactions</h2>
+          <h2 className="card-title">Recent Transactions</h2>
 
           {transactions.length === 0 ? (
             <p className="empty-text">No transactions yet</p>
           ) : (
-           <div className="table-container">
-  <TransactionTable
-    transactions={recentTransactions}
-    showCategory
-    onDelete={handleDelete}
-    onEdit={handleEdit}
-  />
-</div>
+            <div className="table-container">
+              <TransactionTable
+                transactions={recentTransactions}
+                showCategory
+                onDelete={handleDelete}
+                onEdit={handleEdit}
+              />
+            </div>
           )}
         </div>
 
         {/* Chart */}
         <div className="card">
+          <h2 className="card-title">Top Categories</h2>
           <TopCategoriesChart data={topCategories} />
         </div>
 

@@ -42,7 +42,7 @@ const TransactionTable = ({
               return (
                 <tr key={transaction.id}>
                   
-                  <td>
+                  <td data-label="Description">
                     <div className="transaction-info">
                       <div className={`icon ${isIncome ? 'income' : 'expense'}`}>
                         {isIncome ? <FaArrowUp /> : <FaArrowDown />}
@@ -51,24 +51,24 @@ const TransactionTable = ({
                     </div>
                   </td>
 
-                  <td className="date">
+                  <td data-label="Date" className="date">
                     {formatDate(transaction.date)}
                   </td>
 
                   {showCategory && (
-                    <td>
+                    <td data-label="Category">
                       <span className="category-badge">
                         {transaction.category}
                       </span>
                     </td>
                   )}
 
-                  <td className={`amount ${isIncome ? 'income' : 'expense'}`}>
+                  <td data-label="Amount" className={`amount ${isIncome ? 'income' : 'expense'}`}>
                     {isIncome ? '+' : '-'}₹
                     {Math.abs(transaction.amount).toFixed(2)}
                   </td>
 
-                  <td className="actions">
+                  <td data-label="Actions" className="actions">
                     <button
                       className="edit-btn"
                       onClick={() => onEdit(transaction)}

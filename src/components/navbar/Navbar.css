@@ -2,9 +2,10 @@
 .navbar {
   background-color: #ffffff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 1000;
 }
 
-/* Dark mode navbar */
 .dark .navbar {
   background-color: #1e293b;
 }
@@ -78,7 +79,7 @@
 .navbar-right {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
 }
 
 /* Time */
@@ -92,14 +93,13 @@
   color: white;
 }
 
-/* Button */
+/* Theme button */
 .theme-btn {
   padding: 6px 10px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   background: #f1f1f1;
-  transition: 0.3s;
 }
 
 .theme-btn:hover {
@@ -111,13 +111,48 @@
   color: white;
 }
 
-.dark .theme-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+/* Hamburger */
+.menu-toggle {
+  display: none;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-/* Responsive */
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
   .navbar-menu {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
     display: none;
+  }
+
+  .dark .navbar-menu {
+    background: #1e293b;
+  }
+
+  .navbar-menu.open {
+    display: flex;
+  }
+
+  .nav-link {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .time {
+    display: none; /* optional: hide clock on small screens */
   }
 }

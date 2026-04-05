@@ -8,10 +8,11 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const TopCategoriesChart = ({ data }) => {
   const chartRef = useRef(null);
 
-  // Detect dark mode
   const isDark = document.documentElement.classList.contains("dark");
 
-  // Generate colors
+  // ✅ Detect mobile
+  const isMobile = window.innerWidth < 768;
+
   const generateColors = (count) => {
     const colors = [];
     const hueStep = 360 / Math.max(1, count);
@@ -41,9 +42,12 @@ const TopCategoriesChart = ({ data }) => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: "right",
+        position: isMobile ? "bottom" : "right", // ✅ mobile fix
         labels: {
           color: isDark ? "#e2e8f0" : "#333",
+          font: {
+            size: isMobile ? 12 : 14,
+          },
         },
       },
       tooltip: {
@@ -58,12 +62,12 @@ const TopCategoriesChart = ({ data }) => {
             const value = context.raw || 0;
             const total = context.dataset.data.reduce((a, b) => a + b, 0);
             const percentage = Math.round((value / total) * 100);
-            return `${label}: $${value} (${percentage}%)`;
+            return `${label}: ₹${value} (${percentage}%)`;
           },
         },
       },
     },
-    cutout: "70%",
+    cutout: isMobile ? "60%" : "70%", // ✅ smaller donut on mobile
   };
 
   return (

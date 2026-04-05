@@ -1,42 +1,53 @@
 /* Card */
 .chart-card {
-  background: #ffffff;
-  padding: 16px;
-  border-radius: 12px;
-  height: 100%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.dark .chart-card {
-  background: #1e293b;
-  color: white;
+  width: 100%;
 }
 
 /* Title */
 .chart-title {
   font-size: 16px;
   font-weight: 600;
-  margin-bottom: 12px;
-  color: #111;
-}
-
-.dark .chart-title {
-  color: #fff;
+  margin-bottom: 10px;
 }
 
 /* Container */
 .chart-container {
-  position: relative;
+  width: 100%;
   height: 300px;
+  position: relative;
 }
 
-/* Empty text */
+/* Empty */
 .chart-empty {
   text-align: center;
   color: #777;
-  margin-top: 40px;
 }
 
 .dark .chart-empty {
   color: #cbd5f5;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .chart-container {
+    height: 260px;
+  }
+
+  .chart-title {
+    font-size: 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .chart-container {
+    height: 220px;
+  }
+
+  .chart-title {
+    font-size: 14px;
+    text-align: center;
+  }
 }
