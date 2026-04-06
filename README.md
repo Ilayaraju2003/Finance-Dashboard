@@ -1,16 +1,94 @@
-# React + Vite
+💰 Finance Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fully responsive and interactive Finance Dashboard that helps users track, analyze, and visualize financial data in a clean and modern interface.
 
-Currently, two official plugins are available:
+📌 Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The Finance Dashboard is designed to present financial insights through intuitive visualizations such as charts, graphs, and key performance indicators (KPIs).
 
-## React Compiler
+This project demonstrates:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+  - Data visualization techniques
+  - Dashboard UI design
+  - Frontend development best practices
 
-## Expanding the ESLint configuration
+🎯 Objectives
+  - Provide a clear overview of financial data
+  - Enable users to analyze trends over time
+  - Build a responsive and reusable UI system
+  - Practice real-world dashboard development
+    
+✨ Features
+📊 Data Visualization
+  - Line charts for trends
+  - Bar charts for comparisons
+  - Pie charts for distribution
+    
+📈 Financial Insights
+  - Revenue tracking
+  - Expense monitoring
+  - Profit analysis
+    
+📅 Time Filtering
+  - Daily / Weekly / Monthly views
+  - Dynamic data updates
+    
+🎨 UI/UX
+  - Clean dashboard layout
+  - Responsive design (mobile + desktop)
+  - Reusable components
+    
+🛠️ Tech Stack
+    Frontend
+      - HTML5
+      - CSS3
+      - JavaScript (ES6+)
+      
+    Framework (if used)
+      - React.js
+      
+    Styling
+      - Tailwind CSS / Bootstrap
+      
+    Charts & Visualization
+      - Chart.js / Recharts
+      
+    Tools
+      - Git & GitHub
+      - VS Code
+      
+📊 Dashboard Components
+  - 📌 Summary Cards (Revenue, Expenses, Profit)
+  - 📉 Trend Charts
+  - 📊 Category Breakdown
+  - 📅 Date Filters
+  - 🔄 Data Flow
+    
+Data is fetched 
+  - (API or static JSON)
+  - Processed using helper functions
+  - Passed into chart components
+  - Rendered dynamically in UI
+    
+📸 Screenshots
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+  - Dashboard
+
+    <img width="1349" height="638" alt="image" src="https://github.com/user-attachments/assets/36c65375-0027-4d5f-a3f1-9fc307fcbb5d" />
+
+  - Add New Transaction
+
+    <img width="1344" height="628" alt="image" src="https://github.com/user-attachments/assets/92ad2480-356c-4544-b4e5-579d6b8a5f8a" />
+
+  - Transaction History
+
+    <img width="1346" height="632" alt="image" src="https://github.com/user-attachments/assets/24157d21-a758-4b1d-8808-33a3c08e2bb4" />
+
+
+🚀 Future Enhancements
+  - 🔐 User Authentication (Login/Register)
+  - 🌐 API Integration (real financial data)
+  - 📤 Export reports (PDF/Excel)
+  - 🌙 Dark Mode
+  - 📱 Advanced mobile UI
+  - 🔔 Notifications
