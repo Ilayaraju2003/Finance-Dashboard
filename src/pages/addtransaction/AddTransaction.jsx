@@ -18,7 +18,7 @@ const AddTransaction = ({ onAddTransaction, onEditTransaction }) => {
 
     try {
       if (editData) {
-        // ✅ EDIT (LOCAL)
+        //  EDIT (LOCAL)
         const updatedTransaction = {
           ...transaction,
           id: editData.id,
@@ -27,7 +27,7 @@ const AddTransaction = ({ onAddTransaction, onEditTransaction }) => {
 
         onEditTransaction(updatedTransaction);
       } else {
-        // ✅ ADD
+        //  ADD
         onAddTransaction(transaction);
       }
 

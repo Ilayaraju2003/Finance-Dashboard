@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ role, setRole }) => {
   const location = useLocation();
 
   const [time, setTime] = useState(new Date());
@@ -11,26 +11,34 @@ const Navbar = () => {
   );
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // ✅ Live clock
+
+
+  //  Clock
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date());
     }, 1000);
-
     return () => clearInterval(timer);
   }, []);
 
-  // ✅ Theme toggle
+  //  Theme toggle
   const toggleTheme = () => {
     document.documentElement.classList.toggle("dark");
     setIsDark(!isDark);
   };
 
+  //  Role-based nav items
   const navItems = [
-    { name: "Dashboard", path: "/" },
-    { name: "Add Transaction", path: "/add-transaction" },
-    { name: "Transactions", path: "/transactions" },
+    { name: "Dashboard", path: "/", roles: ["admin", "viewer"] },
+    { name: "Add Transaction", path: "/add-transaction", roles: ["admin"] },
+    { name: "Transactions", path: "/transactions", roles: ["admin", "viewer"] },
   ];
+
+  const filteredNavItems = navItems.filter((item) =>
+    item.roles.includes(role)
+  );
+
+
 
   return (
     <nav className="navbar">
@@ -41,14 +49,13 @@ const Navbar = () => {
 
         {/* Menu */}
         <div className={`navbar-menu ${menuOpen ? "open" : ""}`}>
-          {navItems.map((item) => (
+          {filteredNavItems.map((item) => (
             <Link
               key={item.path}
               to={item.path}
-              onClick={() => setMenuOpen(false)} // close menu on click
-              className={`nav-link ${
-                location.pathname === item.path ? "active" : ""
-              }`}
+              onClick={() => setMenuOpen(false)}
+              className={`nav-link ${location.pathname === item.path ? "active" : ""
+                }`}
             >
               {item.name}
             </Link>
@@ -58,15 +65,28 @@ const Navbar = () => {
         {/* Right side */}
         <div className="navbar-right">
 
+          {/* ⏰ Time */}
           <div className="time">
             {time.toLocaleTimeString()}
           </div>
 
+          {/* 🌙 Theme */}
           <button onClick={toggleTheme} className="theme-btn">
             {isDark ? "🌞" : "🌙"}
           </button>
 
-          {/* Hamburger */}
+          {/* 🔽 Role Dropdown */}
+          <select
+            className="role-dropdown"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+          >
+            <option value="admin">Admin</option>
+            <option value="viewer">Viewer</option>
+
+          </select>
+
+          {/* ☰ Hamburger */}
           <button
             className="menu-toggle"
             onClick={() => setMenuOpen(!menuOpen)}

@@ -48,13 +48,13 @@
 .dark .card {
   background: #1e293b;
   color: white;
-  
-}
-.dark .card h2 {
-   color: #fff;
-  
+
 }
 
+.dark .card h2 {
+  color: #fff;
+
+}
 
 /* Empty text */
 .empty-text {
@@ -87,17 +87,14 @@
   border-top: 4px solid #38bdf8;
 }
 
-/* ========================= */
+
 /* CONTAINER */
-/* ========================= */
 
 .table-container {
   width: 100%;
 }
 
-/* ========================= */
 /* DESKTOP TABLE */
-/* ========================= */
 
 .transaction-table {
   width: 100%;
@@ -110,9 +107,7 @@
   border-bottom: 1px solid #eee;
 }
 
-/* ========================= */
 /* MOBILE VIEW */
-/* ========================= */
 
 @media (max-width: 768px) {
 
@@ -132,7 +127,7 @@
     flex-direction: column;
     border-radius: 12px;
     padding: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
 
   .transaction-table td {
@@ -208,4 +203,9 @@
   .main-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.view-btn {
+  background: #3498db;
+  color: white;
 }

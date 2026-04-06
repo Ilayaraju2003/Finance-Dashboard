@@ -108,7 +108,7 @@
 
 .dark .theme-btn {
   background: rgba(255, 255, 255, 0.1);
-  
+
 }
 
 /* Hamburger */
@@ -120,7 +120,7 @@
   cursor: pointer;
 }
 
-/* ================= MOBILE ================= */
+
 @media (max-width: 768px) {
 
   .menu-toggle {
@@ -153,6 +153,16 @@
   }
 
   .time {
-    display: none; /* optional: hide clock on small screens */
+    display: none;
+    /* optional: hide clock on small screens */
   }
+}
+
+.role-dropdown {
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  margin-left: 10px;
+  cursor: pointer;
 }

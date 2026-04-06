@@ -1,12 +1,13 @@
 import React from 'react';
-import { FaArrowUp, FaArrowDown, FaEdit, FaTrash } from 'react-icons/fa';
+import { FaArrowUp, FaArrowDown, FaEdit, FaTrash, FaEye } from 'react-icons/fa';
 import './TransactionTable.css';
 
 const TransactionTable = ({
   transactions,
   showCategory = true,
-  onDelete = () => {},
-  onEdit = () => {}
+  onDelete,
+  onEdit,
+  role = "viewer"
 }) => {
 
   const formatDate = (dateString) => {
@@ -41,7 +42,8 @@ const TransactionTable = ({
 
               return (
                 <tr key={transaction.id}>
-                  
+
+                  {/* Description */}
                   <td data-label="Description">
                     <div className="transaction-info">
                       <div className={`icon ${isIncome ? 'income' : 'expense'}`}>
@@ -51,10 +53,12 @@ const TransactionTable = ({
                     </div>
                   </td>
 
+                  {/* Date */}
                   <td data-label="Date" className="date">
                     {formatDate(transaction.date)}
                   </td>
 
+                  {/* Category */}
                   {showCategory && (
                     <td data-label="Category">
                       <span className="category-badge">
@@ -63,25 +67,43 @@ const TransactionTable = ({
                     </td>
                   )}
 
-                  <td data-label="Amount" className={`amount ${isIncome ? 'income' : 'expense'}`}>
+                  {/* Amount */}
+                  <td
+                    data-label="Amount"
+                    className={`amount ${isIncome ? 'income' : 'expense'}`}
+                  >
                     {isIncome ? '+' : '-'}₹
                     {Math.abs(transaction.amount).toFixed(2)}
                   </td>
 
+                  {/*  ACTIONS */}
                   <td data-label="Actions" className="actions">
-                    <button
-                      className="edit-btn"
-                      onClick={() => onEdit(transaction)}
-                    >
-                      <FaEdit />
-                    </button>
 
-                    <button
-                      className="delete-btn"
-                      onClick={() => onDelete(transaction.id)}
-                    >
-                      <FaTrash />
-                    </button>
+                    {role === "admin" ? (
+                      <>
+                        <button
+                          className="edit-btn"
+                          onClick={() => onEdit(transaction)}
+                        >
+                          <FaEdit />
+                        </button>
+
+                        <button
+                          className="delete-btn"
+                          onClick={() => onDelete(transaction.id)}
+                        >
+                          <FaTrash />
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        className="view-btn"
+                        onClick={() => onEdit(transaction)} // reuse edit as view
+                      >
+                        <FaEye />
+                      </button>
+                    )}
+
                   </td>
 
                 </tr>

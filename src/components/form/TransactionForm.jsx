@@ -168,8 +168,8 @@ const TransactionForm = ({ onSubmit, initialData = {}, isSubmitting }) => {
           {isSubmitting
             ? 'Saving...'
             : initialData.id
-            ? 'Update'
-            : 'Add'}
+              ? 'Update'
+              : 'Add'}
         </button>
       </div>
 

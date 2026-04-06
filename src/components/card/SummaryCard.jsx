@@ -9,13 +9,13 @@ const SummaryCard = ({ title, amount, change, icon, trend }) => {
   return (
     <div className="summary-card">
       <div className="summary-content">
-        
-        
+
+
         {/* Left Content */}
         <div>
           <p className="summary-title">{title}</p>
           <p className="summary-amount">
-            
+
             ${Number(amount).toLocaleString()}
           </p>
 

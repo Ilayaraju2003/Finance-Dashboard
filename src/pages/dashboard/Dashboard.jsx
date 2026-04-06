@@ -6,7 +6,7 @@ import TopCategoriesChart from '../../components/chart/TopCategoriesChart';
 import './Dashboard.css';
 import { useNavigate } from "react-router-dom";
 
-const Dashboard = ({ transactions = [], onDeleteTransaction }) => {
+const Dashboard = ({ transactions = [], onDeleteTransaction, role }) => {
   const [summary, setSummary] = useState({
     totalIncome: 0,
     totalExpenses: 0,
@@ -16,21 +16,21 @@ const Dashboard = ({ transactions = [], onDeleteTransaction }) => {
   const [topCategories, setTopCategories] = useState([]);
   const navigate = useNavigate();
 
-  // ✅ SORT
+  //  SORT
   const recentTransactions = [...transactions]
     .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  // ✅ DELETE
+  //  DELETE
   const handleDelete = (id) => {
     onDeleteTransaction(id);
   };
 
-  // ✅ EDIT
+  //  EDIT
   const handleEdit = (transaction) => {
     navigate("/add-transaction", { state: { transaction } });
   };
 
-  // ✅ CALCULATIONS
+  //  CALCULATIONS
   useEffect(() => {
     const income = transactions
       .filter(tx => tx.type === 'income')
@@ -108,7 +108,8 @@ const Dashboard = ({ transactions = [], onDeleteTransaction }) => {
               <TransactionTable
                 transactions={recentTransactions}
                 showCategory
-                onDelete={handleDelete}
+                role={role} 
+                onDelete={role === "admin" ? handleDelete : null}
                 onEdit={handleEdit}
               />
             </div>
@@ -120,7 +121,6 @@ const Dashboard = ({ transactions = [], onDeleteTransaction }) => {
           <h2 className="card-title">Top Categories</h2>
           <TopCategoriesChart data={topCategories} />
         </div>
-
       </div>
     </div>
   );

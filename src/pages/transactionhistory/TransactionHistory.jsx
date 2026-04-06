@@ -17,7 +17,7 @@ const TransactionHistory = ({ transactions = [] }) => {
     endDate: '',
   });
 
-  // ✅ Safe date parser
+  //  Safe date parser
   const parseDate = (dateStr) => {
     if (!dateStr) return new Date();
     const parts = dateStr.split('/');
@@ -41,7 +41,7 @@ const TransactionHistory = ({ transactions = [] }) => {
       );
     }
 
-    // 🎯 Filters
+    //  Filters
     if (filters.type !== 'all') {
       result = result.filter(tx => tx.type === filters.type);
     }
@@ -58,7 +58,7 @@ const TransactionHistory = ({ transactions = [] }) => {
       result = result.filter(tx => parseDate(tx.date) <= new Date(filters.endDate));
     }
 
-    // ✅ SAFE SORT
+    //  SAFE SORT
     result.sort((a, b) => {
       if (sortConfig.key === "date") {
         return sortConfig.direction === "asc"
@@ -98,107 +98,107 @@ const TransactionHistory = ({ transactions = [] }) => {
   };
 
   const formatDate = (dateString) => {
-  const date = parseDate(dateString);
+    const date = parseDate(dateString);
 
-  if (isNaN(date)) return '—';
+    if (isNaN(date)) return '—';
 
-  return date.toLocaleDateString('en-GB', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric'
-  });
-};
+    return date.toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric'
+    });
+  };
 
   const categories = [...new Set(transactions.map(tx => tx.category))];
 
   return (
-  <div className="history-container">
+    <div className="history-container">
 
-    {/* Header */}
-    <div className="history-header">
-      <h1>Transaction History</h1>
+      {/* Header */}
+      <div className="history-header">
+        <h1>Transaction History</h1>
 
-      <div className="search-box">
-        <FaSearch className="search-icon" />
-        <input
-          type="text"
-          placeholder="Search transactions..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+        <div className="search-box">
+          <FaSearch className="search-icon" />
+          <input
+            type="text"
+            placeholder="Search transactions..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
       </div>
-    </div>
 
-    {/* Filters */}
-    <div className="filters-card">
-      <h2>Filters</h2>
+      {/* Filters */}
+      <div className="filters-card">
+        <h2>Filters</h2>
 
-      <div className="filters-grid">
-        <select name="type" value={filters.type} onChange={handleFilterChange}>
-          <option value="all">All Types</option>
-          <option value="income">Income</option>
-          <option value="expense">Expense</option>
-        </select>
+        <div className="filters-grid">
+          <select name="type" value={filters.type} onChange={handleFilterChange}>
+            <option value="all">All Types</option>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
 
-        <select name="category" value={filters.category} onChange={handleFilterChange}>
-          <option value="all">All Categories</option>
-          {categories.map(cat => (
-            <option key={cat}>{cat}</option>
-          ))}
-        </select>
+          <select name="category" value={filters.category} onChange={handleFilterChange}>
+            <option value="all">All Categories</option>
+            {categories.map(cat => (
+              <option key={cat}>{cat}</option>
+            ))}
+          </select>
 
-        <input type="date" name="startDate" value={filters.startDate} onChange={handleFilterChange} />
-        <input type="date" name="endDate" value={filters.endDate} onChange={handleFilterChange} />
+          <input type="date" name="startDate" value={filters.startDate} onChange={handleFilterChange} />
+          <input type="date" name="endDate" value={filters.endDate} onChange={handleFilterChange} />
+        </div>
       </div>
-    </div>
 
-    {/* Table */}
-    <div className="table-card">
-      <table className="history-table">
+      {/* Table */}
+      <div className="table-card">
+        <table className="history-table">
 
-        <thead>
-          <tr>
-            <th>No</th>
-            <th onClick={() => handleSort('title')}>Description</th>
-            <th onClick={() => handleSort('date')}>Date</th>
-            <th onClick={() => handleSort('category')}>Category</th>
-            <th onClick={() => handleSort('amount')}>Amount</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {filteredTransactions.length > 0 ? (
-            filteredTransactions.map((tx, index) => {
-              const safeAmount = Number(tx.amount ?? 0);
-
-              return (
-                <tr key={tx.id}>
-                  <td data-label="No">{index + 1}</td>
-                  <td data-label="Description">{tx.title || '-'}</td>
-                  <td data-label="Date">{formatDate(tx.date)}</td>
-                  <td data-label="Category">
-                    <span className="badge">{tx.category || '-'}</span>
-                  </td>
-                  <td data-label="Amount" className={`amount ${tx.type}`}>
-                    {tx.type === 'income' ? '+' : '-'}₹{safeAmount.toFixed(2)}
-                  </td>
-                </tr>
-              );
-            })
-          ) : (
+          <thead>
             <tr>
-              <td colSpan="5" className="empty">
-                No transactions found
-              </td>
+              <th>No</th>
+              <th onClick={() => handleSort('title')}>Description</th>
+              <th onClick={() => handleSort('date')}>Date</th>
+              <th onClick={() => handleSort('category')}>Category</th>
+              <th onClick={() => handleSort('amount')}>Amount</th>
             </tr>
-          )}
-        </tbody>
+          </thead>
 
-      </table>
+          <tbody>
+            {filteredTransactions.length > 0 ? (
+              filteredTransactions.map((tx, index) => {
+                const safeAmount = Number(tx.amount ?? 0);
+
+                return (
+                  <tr key={tx.id}>
+                    <td data-label="No">{index + 1}</td>
+                    <td data-label="Description">{tx.title || '-'}</td>
+                    <td data-label="Date">{formatDate(tx.date)}</td>
+                    <td data-label="Category">
+                      <span className="badge">{tx.category || '-'}</span>
+                    </td>
+                    <td data-label="Amount" className={`amount ${tx.type}`}>
+                      {tx.type === 'income' ? '+' : '-'}₹{safeAmount.toFixed(2)}
+                    </td>
+                  </tr>
+                );
+              })
+            ) : (
+              <tr>
+                <td colSpan="5" className="empty">
+                  No transactions found
+                </td>
+              </tr>
+            )}
+          </tbody>
+
+        </table>
+      </div>
+
     </div>
-
-  </div>
-);
+  );
 };
 
 export default TransactionHistory;

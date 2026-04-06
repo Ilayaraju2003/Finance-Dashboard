@@ -1,4 +1,4 @@
-/* ================= BASE ================= */
+/* BASE */
 
 /* App container */
 .app-container {
@@ -9,7 +9,7 @@
   width: 100%;
 }
 
-/* ================= COUNTER ================= */
+/*COUNTER*/
 
 .counter {
   font-size: 16px;
@@ -31,7 +31,7 @@
   outline-offset: 2px;
 }
 
-/* ================= HERO ================= */
+/*HERO*/
 
 .hero {
   position: relative;
@@ -70,7 +70,7 @@
   transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg) scale(0.8);
 }
 
-/* ================= CENTER ================= */
+/*CENTER*/
 
 #center {
   display: flex;
@@ -81,7 +81,7 @@
   flex-grow: 1;
 }
 
-/* ================= NEXT STEPS ================= */
+/*NEXT STEPS*/
 
 #next-steps {
   display: flex;
@@ -89,7 +89,7 @@
   text-align: left;
 }
 
-#next-steps > div {
+#next-steps>div {
   flex: 1;
   padding: 32px;
 }
@@ -140,14 +140,14 @@
   width: 18px;
 }
 
-/* ================= SPACER ================= */
+/* SPACER  */
 
 #spacer {
   height: 88px;
   border-top: 1px solid var(--border);
 }
 
-/* ================= TICKS ================= */
+/* TICKS */
 
 .ticks {
   position: relative;
@@ -172,7 +172,6 @@
   border-right-color: var(--border);
 }
 
-/* ================= RESPONSIVE ================= */
 
 /* Tablet */
 @media (max-width: 1024px) {
@@ -187,7 +186,7 @@
     text-align: center;
   }
 
-  #next-steps > div {
+  #next-steps>div {
     padding: 24px 20px;
   }
 

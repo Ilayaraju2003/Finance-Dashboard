@@ -72,8 +72,8 @@
 
 
 .dark .filters-card h2 {
-   color: #fff;
-  
+  color: #fff;
+
 }
 
 /* Grid */
@@ -150,8 +150,8 @@
 
 /* Amount */
 .amount {
-  
-    text-align: center;
+
+  text-align: center;
   padding: 10px;
   font-size: 13px;
   color: #666;
@@ -227,9 +227,7 @@
   }
 }
 
-/* ========================= */
 /* MOBILE VIEW (FIXED) */
-/* ========================= */
 
 @media (max-width: 768px) {
 
@@ -271,7 +269,7 @@
     background: #fff;
     border-radius: 12px;
     padding: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
 
   .dark .history-table tr {
